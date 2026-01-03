@@ -1,0 +1,2 @@
+model,MAE,MAPE_pct,train_ratio,lags,rolling_windows,n_estimators,max_depth,min_samples_leaf,n_train,n_test
+RandomForestRegressor,0.4209987783431507,215.7491325529759,0.8,"1,2,3,7","3,7",300,18,2,44500,11500

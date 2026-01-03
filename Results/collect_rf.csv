@@ -1,0 +1,2 @@
+model,threshold,accuracy,precision,recall,tn,fp,fn,tp,n_test
+RandomForestClassifier,0.8,0.996,0.9946638207043756,0.9946638207043756,1558,5,5,932,2500
