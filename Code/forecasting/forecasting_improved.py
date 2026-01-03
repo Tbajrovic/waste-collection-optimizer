@@ -70,10 +70,7 @@ def load_timeseries(csv_path: Path) -> pd.DataFrame:
     df = df.rename(columns={date_col: "date", target_col: "fill_level"})
     df["date"] = pd.to_datetime(df["date"])
 
-    # If fill is stored as ratio (0–1), convert to percent (0–100)
-    if target_col == "fill_ratio":
-        df["fill_level"] = df["fill_level"].astype(float) * 100.0
-
+    
     df = df.sort_values(["bin_id", "date"]).reset_index(drop=True)
     return df
 
@@ -191,6 +188,14 @@ def main() -> None:
 
     model = train_xgb(X_train, y_train, seed=args.seed)
     y_pred = model.predict(X_test)
+        # Save per-row predictions for diagnostics/plots
+    pred_path = out_path.with_name("forecast_improved_predictions.csv")
+    preds = test_df[["date", "bin_id"]].copy()
+    preds["y_true"] = y_test
+    preds["y_pred"] = y_pred
+    preds["residual"] = preds["y_true"] - preds["y_pred"]
+    preds.to_csv(pred_path, index=False)
+
 
     mae = float(mean_absolute_error(y_test, y_pred))
     mape = float(safe_mape(y_test, y_pred))

@@ -1,2 +1,2 @@
 model,MAE,MAPE_pct,train_ratio,lags,rolling_windows,n_train,n_test
-XGBoost (XGBRegressor),42.19895893872622,212.96238422241123,0.8,"1,2,3,7","3,7",44500,11500
+XGBoost (XGBRegressor),0.42209328836963644,212.10082440683746,0.8,"1,2,3,7","3,7",44500,11500
