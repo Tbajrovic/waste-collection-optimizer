@@ -206,3 +206,7 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 Dataset/raw/
+
+# Ignore generated routing artifacts
+Results/town_of_cary_distance_matrix.csv
+Results/town_of_cary_nodes.csv
